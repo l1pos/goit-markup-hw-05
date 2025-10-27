@@ -602,43 +602,36 @@ section h2 {
 }
 
 .page-footer .container {
-    display: flex;
-    align-items: baseline;
-    justify-content: flex-start;
-    gap: 80px;
+    display: block;
+    font-size: 0;
 }
 
 .footer-block-main,
 .footer-block-social,
 .footer-block-subscribe {
-    flex-shrink: 0;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 16px;
 }
 
 .footer-block-main {
-    flex-basis: 264px;
+    width: 264px;
+    margin-right: 120px;
 }
 
 .footer-block-social {
-    flex-basis: 208px;
+    width: 208px;
+    margin-right: 80px;
 }
 
-/* Твій медіа-запит — для ширших екранів */
-@media (min-width: 992px) {
-    .page-footer .container {
-        column-gap: 80px;
-    }
-
-    .footer-block-main {
-        margin-right: 40px;
-        /* разом з gap = 120px */
-    }
+.footer-block-subscribe {
+    width: auto;
 }
 
-/* ==== Основна стилізація ==== */
+
 .footer-logo {
     display: inline-block;
     margin-bottom: 16px;
-    padding: 0;
 }
 
 .footer-logo .logo-part {
@@ -652,24 +645,20 @@ section h2 {
     letter-spacing: 0.02em;
 }
 
-/* ==== Соціальні мережі ==== */
-.footer-block-social {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.social-media-text {
+.footer-block-social .social-media-text {
     font-weight: 500;
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.02em;
     color: #ffffff;
+    margin-bottom: 32px;
 }
 
-.social-links-list {
+.footer-block-social .social-links-list {
     display: flex;
     gap: 16px;
+    margin: 0;
+    padding: 0;
 }
 
 .social-links-link {
@@ -692,18 +681,13 @@ section h2 {
     fill: #f4f4fd;
 }
 
-/* Instagram — окремо (stroke замість fill) */
-.social-links-link[href*="instagram"] .social-links-icon {
-    stroke: #f4f4fd;
-    fill: transparent;
-    stroke-width: 1.5;
-}
-
-/* ==== Підписка ==== */
-.footer-block-subscribe {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.footer-block-subscribe .subscribe-text {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    margin-bottom: 16px;
 }
 
 .subscribe-form {
@@ -759,18 +743,34 @@ section h2 {
     background-color: #404bbf;
 }
 
-.subscribe-text {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: 0.02em;
-    color: #ffffff;
-    margin-bottom: 16px;
-}
-
 .subscribe-icon {
     width: 24px;
     height: 24px;
     margin-left: 16px;
     fill: #ffffff;
+}
+
+@media (max-width: 992px) {
+
+    .footer-block-main,
+    .footer-block-social,
+    .footer-block-subscribe {
+        display: block;
+        margin: 0 0 40px 0;
+        width: 100%;
+    }
+
+    .footer-block-subscribe {
+        margin-bottom: 0;
+    }
+
+    .subscribe-form {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .subscribe-input,
+    .subscribe-btn {
+        width: 100%;
+    }
 }
